@@ -1,4 +1,4 @@
-import { PageWrapper,ButtonControl } from "./styles"
+import { PageWrapper, ButtonControl } from "./styles"
 import { useState } from "react"
 
 import Input from "components/Input/Input"
@@ -19,6 +19,9 @@ function Homework_15() {
       return prevValue - 1
     })
   }
+
+  const onDivide = () => {}
+  const onMultiply = () => {}
   return (
     <PageWrapper>
       <Input
@@ -27,9 +30,9 @@ function Homework_15() {
         placeholder="Enter your first name"
         name="first_name"
       />
-      <Counter count={count} onMinus={onMinus} onPlus={onPlus} />
+      <Counter count={count} onMinus={onMinus} onPlus={onPlus} onDivide={onDivide} onMultiply={onMultiply} />
       <ButtonControl>
-      <Button name="Send" onClick={() => {}} />
+        <Button name="Send" onClick={() => {}} />
       </ButtonControl>
     </PageWrapper>
   )
