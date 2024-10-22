@@ -26,14 +26,14 @@ export const CatFactCard = styled.div`
   overflow-y: auto;
 `
 
-export const CatFactsContainer = styled.div`
+export const CatFactsContainer = styled.ol`
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 30px;
 `
 
-export const CatFactText = styled.p`
+export const CatFactText = styled.li`
   font-size: 24px;
   font-weight: bold;
 `
