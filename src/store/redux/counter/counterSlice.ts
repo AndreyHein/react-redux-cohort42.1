@@ -20,24 +20,32 @@ export const counterSlice = createAppSlice({
   // reducers - функции изменяющие состояния counterSlice
   reducers: create => ({
     plus: create.reducer((state: CounterSliceInitialState) => {
-        state.count = state.count + 1
+      state.count = state.count + 1
     }),
-    minus: create.reducer((state:CounterSliceInitialState)=>{
-        state.count = state.count - 1
+    minus: create.reducer((state: CounterSliceInitialState) => {
+      state.count = state.count - 1
     }),
-    multiply:create.reducer((state: CounterSliceInitialState, action: PayloadAction<number>) => {
+    multiply: create.reducer(
+      (state: CounterSliceInitialState, action: PayloadAction<number>) => {
+        console.log(action)
         state.count = Number((state.count * action.payload).toFixed(2))
-    }),
-    divide: create.reducer((state: CounterSliceInitialState, action: PayloadAction<number>) => {
+      },
+    ),
+    divide: create.reducer(
+      (state: CounterSliceInitialState, action: PayloadAction<number>) => {
         state.count = Number((state.count / action.payload).toFixed(2))
-    }),
+      },
+    ),
   }),
   selectors: {
-    count: (state:CounterSliceInitialState) => {
-        return state.count
-    }
-  }
+    count: (state: CounterSliceInitialState) => {
+      return state.count
+    },
+  },
 })
 
+// Получаем в counterSliceActions все actions из counter slice.actions
 export const counterSliceActions = counterSlice.actions
-export const counterSliceSelector = counterSlice.selectors
+
+// Получаем в counterSliceSelectors все селекторы с помощью counterSlice.selectors
+export const counterSliceSelectors = counterSlice.selectors
