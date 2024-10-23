@@ -1,6 +1,7 @@
 import { v4 } from "uuid"
 
 import { createAppSlice } from "store/createAppSlice"
+import { PayloadAction } from "@reduxjs/toolkit"
 
 import { RandomJokeInitialState } from "./types"
 
@@ -56,6 +57,11 @@ export const randomJokeSlice = createAppSlice({
       state.error = undefined
       state.isLoading = false
     }),
+    deleteJokesById: create.reducer(
+      (state: RandomJokeInitialState, action: PayloadAction<string>) => {
+        state.data.filter(joke => joke.id !== action.payload)
+      },
+    ),
   }),
   selectors: {
     randomJokes: (state: RandomJokeInitialState) => state,

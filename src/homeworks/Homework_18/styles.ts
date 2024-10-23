@@ -38,9 +38,22 @@ export const JokeTextType = styled.p`
   font-weight: bold;
   color: brown;
 `
+export const JokeTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const JokeAndButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+`
 
 export const JokeTextPunchline = styled(JokeTextType)`
-color: darkblue;
+  color: darkblue;
 `
 
 export const JokeWrapper = styled.div`

@@ -14,6 +14,8 @@ import {
   JokeTextType,
   JokeTextPunchline,
   JokesContainer,
+  JokeTextContainer,
+  JokeAndButton,
   ButtonControl,
 } from "./styles"
 
@@ -33,6 +35,10 @@ function Homework_18() {
     dispatch(randomJokeSliceActions.deleteAllJokes())
   }
 
+  const delJokeById = (key:string) => {
+    dispatch(randomJokeSliceActions.deleteJokesById(key))
+  }
+
   useEffect(() => {
     if (error) {
       alert(error)
@@ -41,10 +47,13 @@ function Homework_18() {
 
   const randomJokes = data.map((randomJoke:RandomJoke)=>{
     return (
-        <li key={randomJoke.id}>
+        <JokeAndButton key={randomJoke.id}>
+            <JokeTextContainer>
         <JokeTextType>{randomJoke.setup}</JokeTextType>
         <JokeTextPunchline>{randomJoke.punchline}</JokeTextPunchline>
-        </li>
+        </JokeTextContainer>
+        <Button name="Delete Joke" onClick={() => delJokeById(randomJoke.id)}/>
+        </JokeAndButton>
     )
   })
 
