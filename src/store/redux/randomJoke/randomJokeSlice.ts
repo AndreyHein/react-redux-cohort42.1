@@ -45,18 +45,18 @@ export const randomJokeSlice = createAppSlice({
             },
           ]
         },
-        rejected: (state: RandomJokeInitialState) => {
+        rejected: (state: RandomJokeInitialState,action) => {
           state.isLoading = false
           state.error = "Some Network Error"
         },
       },
     ),
-    // deleteAllJokes: create.reducer(() => {randomJokeInitialState}), так не работает
-    deleteAllJokes: create.reducer((state: RandomJokeInitialState) => {
-      state.data = []
-      state.error = undefined
-      state.isLoading = false
-    }),
+    deleteAllJokes: create.reducer(() => randomJokeInitialState),
+    // deleteAllJokes: create.reducer((state: RandomJokeInitialState) => {
+    //   state.data = []
+    //   state.error = undefined
+    //   state.isLoading = false
+    // }),
     deleteJokesById: create.reducer(
       (state: RandomJokeInitialState, action: PayloadAction<string>) => {
         state.data.filter(joke => joke.id !== action.payload)
