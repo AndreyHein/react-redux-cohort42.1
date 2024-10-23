@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 
 import GlobalStyles from "styles/GlobalStyles"
+import {BrowserRouter} from "react-router-dom"
 
 import App from "./App"
 import { store } from "./store/store"
@@ -13,8 +14,10 @@ if (container) {
 
   root.render(
       <Provider store={store}>
+        <BrowserRouter>
         <GlobalStyles />
         <App />
+        </BrowserRouter>
       </Provider>
   )
 } else {
