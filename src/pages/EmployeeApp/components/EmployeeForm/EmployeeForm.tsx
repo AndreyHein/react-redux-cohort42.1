@@ -1,21 +1,24 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { v4 } from "uuid"
 
-import Input from "components/Input/Input";
-import Button from "components/Button/Button";
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
-import { EMPLOYEE_APP_ROUTES } from "constants/routes";
+import { useNavigate } from "react-router-dom"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
-import { EmployeeFormContainer, InputsContainer } from "./styles";
-import { EMPLOYEE_FORM_NAMES } from "./types";
-import { UserDataProps } from "pages/EmployeeApp/types";
+import Input from "components/Input/Input"
+import Button from "components/Button/Button"
+
+import { EMPLOYEE_APP_ROUTES } from "constants/routes"
+
+import { EmployeeFormContainer, InputsContainer } from "./styles"
+import { EMPLOYEE_FORM_NAMES } from "./types"
+import { useAppDispatch } from "store/hooks"
+import { employeeSliceAction } from "store/redux/employeeApp/employeeAppSlice"
 
 function EmployeeForm() {
-  const { setUserData } = useContext(EmployeeContext);
 
-  const navigate = useNavigate();
+const dispatch =useAppDispatch()
+
+  const navigate = useNavigate()
 
   const validationSchema = Yup.object().shape({
     [EMPLOYEE_FORM_NAMES.NAME]: Yup.string()
@@ -31,9 +34,9 @@ function EmployeeForm() {
       .max(3, "The maximum age length is 3"),
     [EMPLOYEE_FORM_NAMES.JOB_POSITION]: Yup.string().max(
       30,
-      "The maximum job position length is 30"
+      "The maximum job position length is 30",
     ),
-  });
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -44,13 +47,15 @@ function EmployeeForm() {
     },
     validationSchema: validationSchema,
     validateOnChange: false,
-    onSubmit: (values) => {
-      setUserData((prevValue:UserDataProps[]) => {
-        return[...prevValue, values]
-      });
-      navigate(EMPLOYEE_APP_ROUTES.EMPLOYEES);
+    onSubmit: values => {
+        const newValues = {id: v4(), ...values}
+        dispatch(employeeSliceAction.addUser(newValues))
+
+      console.log(values);
+
+      navigate(EMPLOYEE_APP_ROUTES.EMPLOYEES)
     },
-  });
+  })
 
   return (
     <EmployeeFormContainer onSubmit={formik.handleSubmit}>

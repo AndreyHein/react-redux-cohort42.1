@@ -1,6 +1,15 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
-import { colors } from "styles/colors";
+import { colors } from "styles/colors"
+
+export const PageWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+`
 
 export const CardContainer = styled.div`
   display: flex;
@@ -15,7 +24,7 @@ export const CardContainer = styled.div`
   background-color: ${colors.WHITE};
   gap: 20px;
   box-sizing: border-box;
-`;
+`
 
 export const CardItem = styled.div`
   display: flex;
@@ -25,16 +34,16 @@ export const CardItem = styled.div`
   padding-top: 10px;
   color: ${colors.PRIMARY};
   text-align: left;
-`;
+`
 
 export const CardLabel = styled.span`
   font-size: 16px;
   font-weight: normal;
   color: ${colors.PRIMARY};
-`;
+`
 
 export const UsersNotFound = styled.p`
-font-size: 30px;
-font-weight: bold;
-color: white;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
 `

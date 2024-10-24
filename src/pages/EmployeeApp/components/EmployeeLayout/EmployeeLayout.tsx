@@ -1,6 +1,5 @@
-import { useState, createContext } from "react";
 
-import { LayoutProps, UserDataProps, EmployeeContextState } from "pages/EmployeeApp/types";
+import { LayoutProps } from "pages/EmployeeApp/types";
 import { EMPLOYEE_APP_ROUTES } from "constants/routes";
 
 import {
@@ -12,17 +11,10 @@ import {
   AppMain,
 } from "./styles";
 
-export const EmployeeContext = createContext<EmployeeContextState>({
-  userData: [],
-  setUserData: () => {},
-});
-
 function EmployeeLayout({ children }: LayoutProps) {
-  const [userData, setUserData] = useState<UserDataProps[]>([]);
-  console.log(userData)
 
   return (
-    <EmployeeContext.Provider value={{ userData, setUserData }}>
+
       <LayoutWrapper>
         <AppHeader>
           <HeaderLogo
@@ -41,7 +33,7 @@ function EmployeeLayout({ children }: LayoutProps) {
         </AppHeader>
         <AppMain>{children}</AppMain>
       </LayoutWrapper>
-    </EmployeeContext.Provider>
+  
   );
 }
 

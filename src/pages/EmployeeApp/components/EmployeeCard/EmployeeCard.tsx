@@ -1,16 +1,40 @@
-import { useContext } from "react";
+import { useEffect } from "react"
 
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
+import {
+  CardLabel,
+  CardContainer,
+  CardItem,
+  PageWrapper,
+  UsersNotFound,
+} from "./styles"
+import { UserData } from "pages/EmployeeApp/types"
 
-import { CardLabel, CardContainer, CardItem, UsersNotFound } from "./styles";
-import { UserDataProps } from "pages/EmployeeApp/types";
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import {
+  employeeSliceAction,
+  employeeSliceSelectors,
+} from "store/redux/employeeApp/employeeAppSlice"
+
+import Button from "components/Button/Button"
 
 function EmployeeCard() {
-  const { userData } = useContext(EmployeeContext);
-  console.log(userData);
-  const userCards = userData.map((user: UserDataProps) => {
+  const dispatch = useAppDispatch()
+
+  const { userData, error } = useAppSelector(
+    employeeSliceSelectors.employees,
+  )
+
+  const deleteAllUsers = () => {
+    dispatch(employeeSliceAction.deleteAllUsers())
+  }
+
+  const userCards = userData.map((user: UserData) => {
+    const deleteUser = () => {
+      dispatch(employeeSliceAction.deleteUser(user.id))
+    }
+
     return (
-      <CardContainer>
+      <CardContainer key={user.id}>
         <CardLabel>
           Name:
           <CardItem>{user.name}</CardItem>
@@ -27,10 +51,31 @@ function EmployeeCard() {
           Job Position:
           <CardItem>{user.jobPosition}</CardItem>
         </CardLabel>
+        <Button name="Delete" onClick={deleteUser} isDeleteVariant />
       </CardContainer>
-    );
-  });
-  return <>{userData.length > 0 ? userCards : <UsersNotFound>Users not found</UsersNotFound> }</>;
+    )
+  })
 
+  useEffect(() => {
+    if (error) {
+      alert(error)
+    }
+  }, [error])
+
+  return (
+    <PageWrapper>
+      {userData.length > 0 ? (
+        userCards
+      ) : (
+        <UsersNotFound>Users not found</UsersNotFound>
+      )}
+      <Button
+        name="Remove All Employees"
+        onClick={deleteAllUsers}
+        isDeleteVariant
+      />
+    </PageWrapper>
+  )
 }
-export default EmployeeCard;
+
+export default EmployeeCard

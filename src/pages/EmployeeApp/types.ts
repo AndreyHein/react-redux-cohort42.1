@@ -1,17 +1,19 @@
-import { ReactNode,  Dispatch, SetStateAction } from "react";
+import { ReactNode } from "react"
 
 export interface LayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export interface UserDataProps {
-  name: string;
-  surname: string;
-  age: string;
-  jobPosition: string;
+export interface UserData {
+  id: string
+  name: string
+  surname: string
+  age: string
+  jobPosition: string
 }
 
- export interface EmployeeContextState {
-  userData: UserDataProps[],
-  setUserData:Dispatch<SetStateAction<UserDataProps[]>>
+export interface EmployeeInitialState {
+  userData: UserData[]
+  error: undefined | string
+  isLoading: boolean
 }
