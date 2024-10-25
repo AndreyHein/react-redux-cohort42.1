@@ -7,6 +7,7 @@ export enum APP_ROUTES {
 }
 
 export enum EMPLOYEE_APP_ROUTES {
+  HOME = "/",
   CREATE_EMPLOYEE = "/createEmployee",
   EMPLOYEES = "/employees",
 }

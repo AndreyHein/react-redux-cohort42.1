@@ -1,4 +1,3 @@
-import { v4 } from "uuid"
 import { createAppSlice } from "store/createAppSlice"
 import { PayloadAction } from "@reduxjs/toolkit"
 
@@ -28,7 +27,7 @@ export const employeeSlice = createAppSlice({
         state.userData = [
           ...state.userData,
           {
-            id: v4(),
+            id: action.payload.id,
             name: action.payload.name,
             surname: action.payload.surname,
             age: action.payload.age,
