@@ -6,6 +6,8 @@ import {
   CardItem,
   PageWrapper,
   UsersNotFound,
+  ButtonControl,
+  CardWrapper
 } from "./styles"
 import { UserData } from "pages/EmployeeApp/types"
 
@@ -34,7 +36,7 @@ function EmployeeCard() {
     }
 
     return (
-      <CardContainer key={user.id}>
+      <CardWrapper key={user.id}>
         <CardLabel>
           Name:
           <CardItem>{user.name}</CardItem>
@@ -52,7 +54,7 @@ function EmployeeCard() {
           <CardItem>{user.jobPosition}</CardItem>
         </CardLabel>
         <Button name="Delete" onClick={deleteUser} isDeleteVariant />
-      </CardContainer>
+      </CardWrapper>
     )
   })
 
@@ -65,15 +67,21 @@ function EmployeeCard() {
   return (
     <PageWrapper>
       {userData.length > 0 ? (
-        userCards
+        <>
+          <CardContainer>
+            {userCards}
+          </CardContainer>
+          <ButtonControl>
+            <Button
+              name="Remove All Employees"
+              onClick={deleteAllUsers}
+              isDeleteVariant
+            />
+          </ButtonControl>
+        </>
       ) : (
         <UsersNotFound>Users not found</UsersNotFound>
       )}
-      <Button
-        name="Remove All Employees"
-        onClick={deleteAllUsers}
-        isDeleteVariant
-      />
     </PageWrapper>
   )
 }
