@@ -1,5 +1,6 @@
-import styled from "@emotion/styled";
-import { colors } from "styles/colors";
+import styled from "@emotion/styled"
+
+import { colors } from "styles/colors"
 
 export const EmployeeFormContainer = styled.form`
   display: flex;
@@ -13,11 +14,11 @@ export const EmployeeFormContainer = styled.form`
   background-color: ${colors.WHITE};
   gap: 40px;
   box-sizing: border-box;
-`;
+`
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 15px;
-`;
+`

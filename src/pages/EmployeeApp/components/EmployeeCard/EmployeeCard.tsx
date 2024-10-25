@@ -1,5 +1,10 @@
 import { useEffect } from "react"
 
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import { employeeSliceAction, employeeSliceSelectors } from "store/redux/employeeApp/employeeAppSlice"
+import { UserData } from "pages/EmployeeApp/types"
+import Button from "components/Button/Button"
+
 import {
   CardLabel,
   CardContainer,
@@ -7,17 +12,8 @@ import {
   PageWrapper,
   UsersNotFound,
   ButtonControl,
-  CardWrapper
+  CardWrapper,
 } from "./styles"
-import { UserData } from "pages/EmployeeApp/types"
-
-import { useAppDispatch, useAppSelector } from "store/hooks"
-import {
-  employeeSliceAction,
-  employeeSliceSelectors,
-} from "store/redux/employeeApp/employeeAppSlice"
-
-import Button from "components/Button/Button"
 
 function EmployeeCard() {
   const dispatch = useAppDispatch()

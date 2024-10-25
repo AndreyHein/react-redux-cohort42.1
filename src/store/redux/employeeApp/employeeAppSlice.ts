@@ -1,5 +1,4 @@
 import { v4 } from "uuid"
-
 import { createAppSlice } from "store/createAppSlice"
 import { PayloadAction } from "@reduxjs/toolkit"
 
@@ -23,19 +22,21 @@ export const employeeSlice = createAppSlice({
         )
       },
     ),
-    addUser: create.reducer((state: EmployeeInitialState, action:PayloadAction<UserData>) => {
-      state.isLoading = false
-      state.userData = [
-        ...state.userData,
-        {
-          id: v4(),
-          name: action.payload.name,
-          surname: action.payload.surname,
-          age: action.payload.age,
-          jobPosition: action.payload.jobPosition,
-        },
-      ]
-    }),
+    addUser: create.reducer(
+      (state: EmployeeInitialState, action: PayloadAction<UserData>) => {
+        state.isLoading = false
+        state.userData = [
+          ...state.userData,
+          {
+            id: v4(),
+            name: action.payload.name,
+            surname: action.payload.surname,
+            age: action.payload.age,
+            jobPosition: action.payload.jobPosition,
+          },
+        ]
+      },
+    ),
   }),
   selectors: {
     employees: (state: EmployeeInitialState) => state,
