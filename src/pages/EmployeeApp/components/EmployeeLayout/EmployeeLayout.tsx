@@ -12,8 +12,8 @@ import {
 } from "./styles"
 
 function EmployeeLayout({ children }: LayoutProps) {
+  const navigate = useNavigate()
   const goToHomePage = () => {
-    const navigate = useNavigate()
     navigate(EMPLOYEE_APP_ROUTES.HOME)
   }
 
