@@ -16,7 +16,7 @@ export const AppHeader = styled.header`
   width: 100%;
   height: 120px;
   border-bottom: 1px solid black;
-  background-color: #faf9ff;
+  background-color: ${colors.WHITE};
   padding: 20px 40px;
 `;
 
@@ -47,12 +47,12 @@ export const HeaderLink = styled(NavLink)`
 
 export const AppMain = styled.main`
   display: flex;
-  justify-content: center; // Центрування по горизонталі
-  align-items: center; // Центрування по вертикалі
+  justify-content: center; 
+  align-items: center; 
   flex: 1;
   padding: 40px;
   background-color: ${colors.PRIMARY};
   min-height: calc(
     100vh - 120px
-  ); // Встановлюємо мінімальну висоту, щоб врахувати висоту хедера
+  ); 
 `;
