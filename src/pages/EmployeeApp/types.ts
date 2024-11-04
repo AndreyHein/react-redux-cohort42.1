@@ -16,4 +16,5 @@ export interface EmployeeInitialState {
   userData: UserData[]
   error: undefined | string
   isLoading: boolean
+  isModalOpened: boolean
 }

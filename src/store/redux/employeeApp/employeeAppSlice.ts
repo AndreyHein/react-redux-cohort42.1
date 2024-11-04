@@ -7,6 +7,7 @@ const userDataInitialState: EmployeeInitialState = {
   userData: [],
   error: undefined,
   isLoading: false,
+  isModalOpened: false,
 }
 
 export const employeeSlice = createAppSlice({
@@ -36,6 +37,12 @@ export const employeeSlice = createAppSlice({
         ]
       },
     ),
+    openModal: create.reducer((state: EmployeeInitialState) => {
+      state.isModalOpened = true
+    }),
+    closeModal: create.reducer((state: EmployeeInitialState) => {
+        state.isModalOpened = false
+      }),
   }),
   selectors: {
     employees: (state: EmployeeInitialState) => state,

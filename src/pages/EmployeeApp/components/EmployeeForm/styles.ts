@@ -22,3 +22,24 @@ export const InputsContainer = styled.div`
   width: 100%;
   gap: 15px;
 `
+export const SuccessModalWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+`;
+
+export const ModalInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+`;
+
+export const ModalInfo = styled.div`
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: purple;
+`;

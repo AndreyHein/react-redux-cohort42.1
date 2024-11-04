@@ -1,4 +1,5 @@
 import { v4 } from "uuid"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from "yup"
@@ -6,14 +7,20 @@ import * as Yup from "yup"
 import { EMPLOYEE_APP_ROUTES } from "constants/routes"
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
-import { useAppDispatch } from "store/hooks"
-import { employeeSliceAction } from "store/redux/employeeApp/employeeAppSlice"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import {
+  employeeSliceAction,
+  employeeSliceSelectors,
+} from "store/redux/employeeApp/employeeAppSlice"
 
 import { EmployeeFormContainer, InputsContainer } from "./styles"
 import { EMPLOYEE_FORM_NAMES } from "./types"
 
+import Modal from "components/Modal/Modal"
+
 function EmployeeForm() {
   const dispatch = useAppDispatch()
+  // const { userData } = useAppSelector(employeeSliceSelectors.employees)
 
   const navigate = useNavigate()
 
@@ -48,7 +55,9 @@ function EmployeeForm() {
       const newValues = { id: v4(), ...values }
       dispatch(employeeSliceAction.addUser(newValues))
 
-      console.log(values)
+      // useEffect(() => {
+        
+      // }, [userData])
 
       navigate(EMPLOYEE_APP_ROUTES.EMPLOYEES)
     },
